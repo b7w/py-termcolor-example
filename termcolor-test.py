@@ -24,17 +24,22 @@ def make_colored(ch):
     return colored(ch, color, attrs=attrs)
 
 
-if len(sys.argv) < 2:
-    print("Usage: {} <infile>".format(sys.argv[0]), file=sys.stderr)
-    sys.exit(1)
+def main(fname):
+    lines = file_to_list(fname)
+    for src_line in lines:
+        dst_line = ""
+        i = 0
+        chnum = len(src_line)
+        while i < chnum:
+            ch = src_line[i]
+            dst_line = dst_line + make_colored(ch)
+            i += 1
+        print(dst_line)
 
-lines = file_to_list(sys.argv[1])
-for src_line in lines:
-    dst_line = ""
-    i = 0
-    chnum = len(src_line)
-    while i < chnum:
-        ch = src_line[i]
-        dst_line = dst_line + make_colored(ch)
-        i += 1
-    print(dst_line)
+
+if __name__ == "__main__":
+    if len(sys.argv) == 2:
+        main(sys.argv[1])
+    else:
+        print("Usage: {} <infile>".format(sys.argv[0]), file=sys.stderr)
+        sys.exit(1)
