@@ -6,10 +6,8 @@ from termcolor import colored
 
 
 def file_to_list(fname):
-    rslt = []
     with open(fname, "r") as f:
-        rslt = [x for x in f.read().split("\n") if x.strip() != ""]
-    return rslt
+        return [x.strip() for x in f.readlines() if x.strip()]
 
 
 def make_colored(ch):
