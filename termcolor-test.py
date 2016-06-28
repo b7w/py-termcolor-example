@@ -27,14 +27,9 @@ def make_colored(ch):
 def main(fname):
     lines = file_to_list(fname)
     for src_line in lines:
-        dst_line = ""
-        i = 0
-        chnum = len(src_line)
-        while i < chnum:
-            ch = src_line[i]
-            dst_line = dst_line + make_colored(ch)
-            i += 1
-        print(dst_line)
+        for ch in src_line:
+            print(make_colored(ch), end='')
+        print()
 
 
 if __name__ == "__main__":
