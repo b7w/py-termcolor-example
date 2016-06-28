@@ -11,23 +11,16 @@ def file_to_list(fname):
 
 
 def make_colored(ch):
-    color = "red"  # error
-    attrs = []
-    if ch == "~":
-        color = "blue"
-    elif ch == ".":
-        color = "white"
-    elif ch == "#":
-        color = "green"
-    elif ch == "O":
-        color = "white"
-        attrs = ["bold"]
-    elif ch == "^":
-        color = "red"
-        attrs = ["dark"]
-    elif ch == "=":
-        color = "red"
-        attrs = ["dark"]
+    chars = {
+        "~": ("blue", []),
+        ".": ("white", []),
+        "#": ("green", []),
+        "O": ("white", ["bold"]),
+        "^": ("red", ["dark"]),
+        "=": ("red", ["dark"]),
+    }
+    default = ("red", [])
+    color, attrs = chars.get(ch, default)
     return colored(ch, color, attrs=attrs)
 
 
