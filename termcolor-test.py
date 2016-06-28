@@ -1,6 +1,7 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import sys
+
 from termcolor import colored
 
 
@@ -30,6 +31,7 @@ def make_colored(ch):
         color = "red"
         attrs = ["dark"]
     return colored(ch, color, attrs=attrs)
+
 
 if len(sys.argv) < 2:
     print("Usage: {} <infile>".format(sys.argv[0]), file=sys.stderr)
